@@ -41,40 +41,42 @@ vim.cmd.colorscheme = "catppuccin"
 vim.cmd.set('wrap')
 vim.cmd.set('paste')
 
-vim.api.nvim_create_augroup('AutoRestore', {})
 
-vim.api.nvim_create_autocmd("VimEnter", {
-	pattern = "*",
-	group = 'AutoRestore',
-	once = true,
-	callback = function(_)
-		local stargs = vim.fn.argc()
-		local vcwd = vim.fn.getcwd()
-		local homedir = os.getenv("HOME")
-		-- Load last closed session if launched from ~ with no arguments
-		if (stargs == 0 and vcwd == homedir) then
-			-- Skip if another instance is already running
-			local nvims = io.popen("pgrep -x nvim|wc -l"):read("n")
-			-- Every instance spawns 2 processes IDK why
-			if nvims > 2 then
-				-- require("alpha").start(false)
-				-- vim.cmd.Neotree('toggle')
-				return
-			else
-				vim.cmd.SessionManager('load_last_session')
-			end
-	-- Load expliticly specified non-~ directory session if it exists
-		elseif (stargs == 0 and vcwd ~= homedir) then
-			if require('session_manager.config').dir_to_session_filename(vcwd):exists() then
-				vim.cmd.SessionManager('load_current_dir_session')
-			end
-		end
-	end,
-})
+vim.api.nvim_create_augroup("AutoRestore", {})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+-- 	pattern = "*",
+-- 	group = "AutoRestore",
+-- 	once = true,
+-- 	callback = function(_)
+-- 		local stargs = vim.fn.argc()
+-- 		local vcwd = vim.fn.getcwd()
+-- 		local homedir = os.getenv("HOME")
+-- 		-- Load last closed session if launched from ~ with no arguments
+-- 		if (stargs == 0 and vcwd == homedir) then
+-- 			-- Skip if another instance is already running
+-- 			local nvims = io.popen("pgrep -x nvim|wc -l"):read("n")
+-- 			-- Every instance spawns 2 processes IDK why
+-- 			if nvims > 2 then
+-- 				-- require("alpha").start(false)
+-- 				-- vim.cmd.Neotree("toggle")
+-- 				return
+-- 			else
+-- 				vim.cmd.SessionManager("load_last_session")
+--         return
+-- 			end
+-- 	-- Load expliticly specified non-~ directory session if it exists
+-- 		elseif (stargs == 0 and vcwd ~= homedir) then
+-- 			if require("session_manager.config").dir_to_session_filename(vcwd):exists() then
+-- 				vim.cmd.SessionManager("load_current_dir_session")
+--         return
+-- 			end
+-- 		end
+-- 	end,
+-- })
 
-	vim.api.nvim_create_autocmd({ 'User' }, {
+	vim.api.nvim_create_autocmd({ "User" }, {
 	pattern = "SessionLoadPost",
-	group = 'AutoRestore',
+	group = "AutoRestore",
 	callback = function()
 		-- Load appropriate git config for current directory
 		-- TODO: move to a dedicated envgetting function as this var is already used in 2 places

@@ -25,8 +25,9 @@ local options = {
 	scrolloff = 10,
 	-- updatetime = 250,
 	updatetime = 50,
-	clipboard = 'unnamedplus',
-	-- clipboard = "unnamed",
+	-- clipboard = 'unnamedplus',
+	clipboard = "unnamed",
+	hlsearch = true
 }
 
 for k, v in pairs(options) do

@@ -4,8 +4,6 @@ local keymap = vim.api.nvim_set_keymap
 -- Childish stuff
 -- keymap ("n", "<leader>te", "<cmd>Neotree toggle<CR>", { desc = "Toggle NeoTree", noremap = true, silent = true })
 -- keymap ("n", "<leader>to", "<cmd>Neotree focus<CR>", { desc = "Focus NeoTree", noremap = true, silent = true })
-keymap ("n", "<leader>Ss", "<cmd>SessionManager save_current_session<CR>", { desc = "Save session", noremap = true, silent = true })
-keymap ("n", "<leader>Sf", "<cmd>SessionManager save_current_session<CR>", { desc = "Save session", noremap = true, silent = true })
 
 -- Sessions
 keymap ("n", "<leader>Sl", "<cmd>SessionManager! load_last_session<cr>", { desc = "Load last session", noremap = true, silent = true })
@@ -16,6 +14,9 @@ keymap ("n", "<leader>S.", "<cmd>SessionManager! load_current_dir_session<cr>", 
 keymap ("n", "<leader>tu", "<cmd>lua require('undotree').toggle()<CR>", { desc = "Toggle Undotree", noremap = true, silent = true })
 keymap ("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 keymap ("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+keymap ("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+
+
 
 
 -- keymap ("n", "<C-Tab>", {
@@ -42,9 +43,11 @@ keymap ("n", "<leader>tt", "<cmd>ToggleTerm size=10 direction=horizontal name=Th
 -- v	-- Do NOT overwrite current buffer on paste
 keymap ("v", "p", "\"_dp", { noremap = true, silent = true })
 keymap ("v", "d", "\"_d", { noremap = true, silent = true })
+keymap ("v", "c", "\"_c", { noremap = true, silent = true })
 keymap ("v", "<Del>", "\"_d", { noremap = true, silent = true })
 keymap ("v", "<leader>y", "\"+y", { noremap = true, silent = true })
 keymap ("v", "<leader>s", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap = true, silent = true })
+keymap ("v", "<C-r>", "\"hy:%s/<C-r>h//gc<left><left><left>", { noremap = true, silent = true })
 -- t
 keymap ("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Enter Normal Mode", noremap = true, silent = true })
 keymap ("t", "<C-v><Esc>", "<Esc>", { desc = "Send Escape to the running command", noremap = true, silent = true })

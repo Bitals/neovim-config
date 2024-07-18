@@ -5,8 +5,12 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
+    cmd = 'Neotree',
+      keys = {
+        { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+      },
     config = function ()
       -- If you want icons for diagnostic errors, you'll need to define them somewhere:
       vim.fn.sign_define("DiagnosticSignError",
@@ -163,6 +167,7 @@ return {
             --}
             ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
             ["q"] = "close_window",
+            ["\\"] = "close_window",
             ["R"] = "refresh",
             ["?"] = "show_help",
             ["<"] = "prev_source",

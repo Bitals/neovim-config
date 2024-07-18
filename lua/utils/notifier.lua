@@ -27,7 +27,7 @@ return{
 		else
 			id = nil
 			-- TODO: add notify plugin arguments
-			require("astronvim.utils").notify(content)
+			-- require("astronvim.utils").notify(content)
 		end
 		-- print(id)
 		return id

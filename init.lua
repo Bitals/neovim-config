@@ -99,7 +99,7 @@ vim.api.nvim_create_augroup("AutoRestore", {})
 --	 return false
 -- end,
 
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	callback = function()
 		-- Don't save at home
 		if vim.fn.getcwd() == os.getenv("HOME") then return end
@@ -113,7 +113,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 				return
 			end
 		end
-		vim.cmd.SessionManager('save_current_session')
+		vim.cmd.SessionManager("save_current_session")
 		-- if ( neotreeOpen == true ) then vim.cmd.Neotree('toggle') end
 	end
 })
